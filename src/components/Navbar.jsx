@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function Navbar() {
-  const navItems = ['About', 'Work', 'Projects', 'Contact'];
+  const navItems = ["About", "Work", "Projects", "Contact"];
 
   return (
     <motion.header
@@ -15,9 +15,9 @@ export default function Navbar() {
             whileHover={{ scale: 1.1 }}
             className="text-secondary font-bold text-2xl"
           >
-            Thierry
+            Thierry Michaël
           </motion.div>
-          
+
           <ul className="hidden md:flex space-x-8">
             {navItems.map((item, index) => (
               <motion.li
