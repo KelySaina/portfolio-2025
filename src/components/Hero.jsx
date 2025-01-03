@@ -21,8 +21,8 @@ export default function Hero() {
             I build things for the web.
           </h2>
           <p className="text-textSecondary max-w-lg mb-8">
-            I'm a software developer specializing in building exceptional
-            digital experiences.
+            I'm a software developer specializing in building exceptional and
+            user centered digital experiences.
           </p>
           <motion.button
             onClick={scrollToWork}
