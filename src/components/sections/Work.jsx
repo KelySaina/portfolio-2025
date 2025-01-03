@@ -28,7 +28,7 @@ export default function Work() {
         "Implemented API endpoints to support front-end requirements",
         "Ensured smooth data flow and integration with external services"
       ],
-      tech: ["Node.js", "GraphQL", "API Development", "AWS S3"]
+      tech: ["Node.js", "GraphQL", "API Development"]
     },
     {
       title: "DevOps Intern",
