@@ -1,21 +1,45 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const techStack = [
-  { name: 'React', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg' },
-  { name: 'Vue', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg' },
-  { name: 'Node.js', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg' },
-  { name: 'Java', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg' },
-  { name: 'PHP', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg' },
-  { name: 'Jenkins', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg' },
-  { name: 'Ansible', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/ansible/ansible-original.svg' },
-  { name: 'GCP', img: 'https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg' }
+  {
+    name: "React",
+    img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg",
+  },
+  {
+    name: "Vue",
+    img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg",
+  },
+  {
+    name: "Node.js",
+    img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    name: "Java",
+    img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
+  },
+  {
+    name: "PHP",
+    img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg",
+  },
+  {
+    name: "Jenkins",
+    img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg",
+  },
+  {
+    name: "Ansible",
+    img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/ansible/ansible-original.svg",
+  },
+  {
+    name: "GCP",
+    img: "https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg",
+  },
 ];
 
 export default function About() {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2
+    threshold: 0.2,
   });
 
   return (
@@ -31,18 +55,19 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="text-textSecondary">
               <p className="mb-4">
-                I'm a passionate Full Stack Developer and aspiring DevOps engineer with expertise in modern web technologies
-                and cloud infrastructure. My journey spans from frontend development to cloud architecture, allowing me to build
-                and deploy scalable applications.
+                I'm a passionate Full Stack Developer and aspiring DevOps
+                engineer with expertise in modern web technologies and cloud
+                infrastructure. My journey spans from frontend development to
+                cloud architecture, allowing me to build and deploy scalable
+                applications.
               </p>
               <p className="mb-4">
-                As a Google Cloud Certified Associate Cloud Engineer, I specialize in cloud-native solutions
-                and infrastructure automation.
+                As a Google Cloud Certified Associate Cloud Engineer, I
+                specialize in cloud-native solutions and infrastructure
+                automation.
               </p>
             </div>
-            <motion.div
-              className="grid grid-cols-4 gap-4 p-4 bg-primary/30 rounded-lg"
-            >
+            <motion.div className="grid grid-cols-4 gap-4 p-4 bg-primary/30 rounded-lg">
               {techStack.map((tech, index) => (
                 <motion.div
                   key={tech.name}
@@ -57,7 +82,9 @@ export default function About() {
                     alt={tech.name}
                     className="w-10 h-10 mb-2"
                   />
-                  <span className="text-xs text-textSecondary">{tech.name}</span>
+                  <span className="text-xs text-textSecondary">
+                    {tech.name}
+                  </span>
                 </motion.div>
               ))}
             </motion.div>
