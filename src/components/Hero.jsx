@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const scrollToWork = () => {
-    document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("work").scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -13,7 +13,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-secondary mb-4">Hi, my name is</p>
+          <p className="text-secondary mb-4 text-xl">Hi, my name is</p>
           <h1 className="text-5xl md:text-7xl font-bold text-textPrimary mb-4">
             Thierry.
           </h1>
@@ -21,7 +21,8 @@ export default function Hero() {
             I build things for the web.
           </h2>
           <p className="text-textSecondary max-w-lg mb-8">
-            I'm a software developer specializing in building exceptional digital experiences.
+            I'm a software developer specializing in building exceptional
+            digital experiences.
           </p>
           <motion.button
             onClick={scrollToWork}
