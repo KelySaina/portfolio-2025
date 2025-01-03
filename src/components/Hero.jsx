@@ -6,7 +6,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="h-screen flex items-center justify-center">
+    <section id="hero" className="h-screen flex items-center justify-center">
       <div className="max-w-4xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

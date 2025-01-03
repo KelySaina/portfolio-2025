@@ -15,7 +15,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.1 }}
             className="text-secondary font-bold text-2xl"
           >
-            Thierry Michaël
+            <a href={`#hero`}>Thierry Michaël</a>
           </motion.div>
 
           <ul className="hidden md:flex space-x-8">
