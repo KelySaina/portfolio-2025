@@ -21,7 +21,7 @@ export default function Contact() {
             and DevOps. Whether you have a question or just want to say hi, I'll
             try my best to get back to you! Feel free to contact me anytime.
           </p>
-          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
+          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center">
             <motion.a
               href="mailto:thierrymichael2001@gmail.com"
               className="flex items-center justify-center gap-2 inline-block border-2 border-secondary text-secondary px-8 py-4 rounded-lg text-lg font-semibold
