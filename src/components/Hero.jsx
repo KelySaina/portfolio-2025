@@ -27,12 +27,12 @@ export default function Hero() {
             I'm a software developer specializing in building exceptional and
             user-centered digital experiences.
           </p>
-          <div className="grid gap-4 grid-cols-1 lg:grid-cols-3  items-center">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  items-center">
             <motion.button
               onClick={scrollToWork}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex gap-2 items-center border border-secondary text-secondary px-6 py-3 rounded hover:bg-secondary/10"
+              className="flex gap-2 items-center justify-center border border-secondary text-secondary px-6 py-3 rounded hover:bg-secondary/10"
             >
               Check out my work
               <svg

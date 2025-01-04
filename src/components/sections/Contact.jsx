@@ -68,8 +68,8 @@ export default function Contact() {
               Get my CV
             </motion.a>
           </div>
-          <div className="mt-12">
-            <p className="flex items-center justify-center gap-2 text-textSecondary mb-4">
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <p className="flex items-center justify-center gap-2 text-textSecondary">
               <span className="text-secondary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
