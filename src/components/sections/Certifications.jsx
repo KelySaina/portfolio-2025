@@ -10,7 +10,7 @@ export default function Certifications() {
       issuer: "Ecole Nationale d'Informatique",
       date: "2022-2023",
       description: "Achieved highest honors for thesis on CI/CD of a Node.js API with Jenkins",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNvbXB1dGVyJTIwYmFjaGVsb3J8ZW58MHx8MHx8fDA%3D"
+      image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.LKW8SdgMoCoqpERH5vNokAAAAA%3Fpid%3DApi&f=1&ipt=a8fe59d177f65cd4ea7ecafad070c711e3e3a3098027b090232f59d337811910&ipo=images"
     },
     {
       title: "Associate Cloud Engineer (ACE)",
