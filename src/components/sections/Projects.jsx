@@ -20,7 +20,7 @@ export default function Projects() {
       description:
         "Developed VoIP communication system using Asterisk, enabling efficient voice communication infrastructure",
       image:
-        "https://media.istockphoto.com/id/1521108425/fr/photo/voip-concept-de-t%C3%A9l%C3%A9communication-voix-sur-ip-main-dhomme-daffaires-utilisant-un-smartphone.webp?a=1&b=1&s=612x612&w=0&k=20&c=3h0cF_cYiM5pvEL4Jt8VyB7qyf93AXW08EQ9yjjvztg=",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.dSAKqRMZGF_dRBo8JLGnIwHaET%26cb%3Diwc2%26pid%3DApi&f=1&ipt=0d556763d09d7245a947ed5713e3eb01c0860da68ae98c71feb7bbc290318d0a&ipo=images",
       tech: ["Asterisk", "VoIP", "Network Infrastructure"],
       links: { github: "#", live: "#" },
     },
