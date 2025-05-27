@@ -28,7 +28,7 @@ export default function Projects() {
       title: "Load Balancer & Failover",
       description:
         "Implemented high-availability solution using HA-Proxy for load balancing and failover capabilities",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
+      image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.1WpJ9i6QpaemdUy5I_xMOgHaDt%26pid%3DApi&f=1&ipt=a302ef2ebcdd55e6e95a6c279638add88324c0ed9c275d4469c27627a7c512f0&ipo=images",
       tech: ["HA-Proxy", "Load Balancing", "High Availability"],
       links: { github: "#", live: "#" },
     },
