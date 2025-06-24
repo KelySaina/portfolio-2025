@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Work from "./components/sections/Work";
 import Projects from "./components/sections/Projects";
+import Personal from "./components/sections/Personal";
 import Certifications from "./components/sections/Certifications";
 import Contact from "./components/sections/Contact";
 
@@ -34,6 +35,7 @@ function App() {
           <About />
           <Work />
           <Projects />
+          <Personal />
           <Certifications />
           <Contact />
         </main>
