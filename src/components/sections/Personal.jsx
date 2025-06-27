@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import PersonalCard from "../ui/PersonalCard";
-import { title } from "framer-motion/client";
+import { ListVideo } from "lucide-react";
 
 const showCase = [
   {
@@ -191,7 +191,8 @@ export default function Personal() {
             Software Development Projects
           </h2>
           <div className="mb-5 ml-5">
-            <h3 className="text-2xl font-bold mb-5">
+            <h3 className="text-2xl font-bold mb-5 flex items-center gap-2">
+              <ListVideo size={36} />
               <span className="text-white">Showcase projects</span>
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -201,8 +202,9 @@ export default function Personal() {
             </div>
           </div>
           <div className="mb-5 ml-5">
-            <h3 className="text-2xl font-bold mb-5">
-              <span className="text-white">One service projects</span>
+            <h3 className="text-2xl font-bold mb-5 flex items-center gap-2">
+              <ListVideo size={36} />
+              <span className="text-white">Single Service projects</span>
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {webAI.map((project, index) => (
@@ -211,7 +213,8 @@ export default function Personal() {
             </div>
           </div>
           <div className="mb-5 ml-5">
-            <h3 className="text-2xl font-bold mb-5">
+            <h3 className="text-2xl font-bold mb-5 flex items-center gap-2">
+              <ListVideo size={36} />
               <span className="text-white">Management projects</span>
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -221,7 +224,8 @@ export default function Personal() {
             </div>
           </div>
           <div className="mb-5 ml-5">
-            <h3 className="text-2xl font-bold mb-5">
+            <h3 className="text-2xl font-bold mb-5 flex items-center gap-2">
+              <ListVideo size={36} />
               <span className="text-white">Utility projects</span>
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

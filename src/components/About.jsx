@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
+import { useEffect } from "react";
 
 const techStack = [
   {
@@ -23,6 +26,18 @@ const techStack = [
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg",
   },
   {
+    name: "Docker",
+    img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg",
+  },
+  {
+    name: "Supabase",
+    img: "https://img.icons8.com/?size=48&id=sH0rW2TvYdr9&format=png",
+  },
+  {
+    name: "Tailwind CSS",
+    img: "https://img.icons8.com/?size=48&id=x7XMNGh2vdqA&format=png",
+  },
+  {
     name: "Jenkins",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg",
   },
@@ -34,13 +49,51 @@ const techStack = [
     name: "GCP",
     img: "https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg",
   },
+  {
+    name: "AWS",
+    img: "https://img.icons8.com/?size=48&id=33039&format=png",
+  },
+  {
+    name: "Kubernetes",
+    img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg",
+  },
+  {
+    name: "GitLab",
+    img: "https://img.icons8.com/?size=48&id=34886&format=png",
+  },
 ];
 
 export default function About() {
+  const [sliderRef, slider] = useKeenSlider({
+    loop: true,
+    slides: {
+      perView: 5,
+      spacing: 16,
+    },
+    breakpoints: {
+      "(max-width: 768px)": {
+        slides: {
+          perView: 3,
+          spacing: 12,
+        },
+      },
+    },
+  });
+
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
   });
+
+  useEffect(() => {
+    if (!slider) return;
+
+    const interval = setInterval(() => {
+      slider.current?.next();
+    }, 1500);
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, [slider]);
 
   return (
     <section id="about" className="py-20 min-h-screen flex items-center">
@@ -52,35 +105,91 @@ export default function About() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl font-bold text-textPrimary mb-8">About Me</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="text-textSecondary">
-              <p className="mb-4">
-                I'm a passionate Full Stack Developer and aspiring DevOps
-                engineer with expertise in modern web technologies and cloud
-                infrastructure. My journey spans from frontend development to
-                cloud architecture, allowing me to build and deploy scalable
-                applications.
-              </p>
-              <p className="mb-4">
-                As a Google Cloud Certified Associate Cloud Engineer, I
-                specialize in cloud-native solutions and infrastructure
-                automation.
-              </p>
+
+          <div className="grid gap-8">
+            {/* Left Section: Intro */}
+            <div className="text-textSecondary space-y-4">
+              <div className="text-textSecondary space-y-6">
+                <div>
+                  <p>
+                    👋 I'm a{" "}
+                    <span className="font-semibold">Full Stack Developer</span>{" "}
+                    and
+                    <span className="font-semibold">
+                      {" "}
+                      aspiring DevOps Engineer
+                    </span>
+                    .
+                  </p>
+                  <p className="text-sm text-textTertiary mt-1">
+                    I work across the entire software stack, from frontend UI to
+                    backend logic, and I’m growing my skills in automating
+                    infrastructure and deployments.
+                  </p>
+                </div>
+
+                <div>
+                  <p>
+                    🛠️ I build responsive frontends, scalable backends, and
+                    design cloud-native architectures.
+                  </p>
+                  <p className="text-sm text-textTertiary mt-1">
+                    I create interfaces that work on any device, engineer APIs
+                    and systems that grow with demand, and design systems for
+                    the cloud from the ground up.
+                  </p>
+                </div>
+
+                <div>
+                  <p>
+                    ☁️ As a{" "}
+                    <span className="font-semibold">
+                      Google Cloud Certified Associate Cloud Engineer
+                    </span>
+                    , I specialize in automation, CI/CD, and infrastructure as
+                    code.
+                  </p>
+                  <p className="text-sm text-textTertiary mt-1">
+                    I automate repetitive tasks, configure continuous
+                    integration/deployment pipelines, and use tools like
+                    Terraform or Ansible to manage infrastructure
+                    programmatically.
+                  </p>
+                </div>
+
+                <div>
+                  <p>
+                    🚀 I love delivering fast, secure, and reliable software
+                    across the full stack.
+                  </p>
+                  <p className="text-sm text-textTertiary mt-1">
+                    Performance, security, and stability are at the core of
+                    everything I build—ensuring users and teams have a great
+                    experience.
+                  </p>
+                </div>
+              </div>
             </div>
-            <motion.div className="grid grid-cols-4 gap-4 p-4 bg-primary/30 rounded-lg">
+
+            {/* Right Section: Toolbox */}
+            <motion.div
+              className="keen-slider bg-primary/30 rounded-lg p-4"
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5 }}
+              ref={sliderRef}
+            >
               {techStack.map((tech, index) => (
                 <motion.div
                   key={tech.name}
-                  initial={{ opacity: 0, scale: 0 }}
+                  className="keen-slider__slide flex flex-col items-center justify-center overflow-visible"
+                  initial={{ opacity: 0, scale: 0.8 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  className="flex flex-col items-center justify-center p-2"
                 >
                   <img
                     src={tech.img}
                     alt={tech.name}
-                    className="w-10 h-10 mb-2"
+                    className="w-10 h-10 mb-1"
                   />
                   <span className="text-xs text-textSecondary">
                     {tech.name}

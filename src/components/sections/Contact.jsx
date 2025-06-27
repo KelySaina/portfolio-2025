@@ -17,9 +17,9 @@ export default function Contact() {
             Get In Touch
           </h2>
           <p className="text-textSecondary mb-8 max-w-lg mx-auto">
-            I'm currently looking for new opportunities in software development
-            and DevOps. Whether you have a question or just want to say hi, I'll
-            try my best to get back to you! Feel free to contact me anytime.
+            I'm always looking for new opportunities in software development and
+            DevOps. Whether you have a question or just want to say hi, I'll try
+            my best to get back to you! Feel free to contact me anytime.
           </p>
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center">
             <motion.a

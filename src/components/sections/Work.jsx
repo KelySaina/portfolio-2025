@@ -1,11 +1,33 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import ExperienceCard from '../ui/ExperienceCard';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import ExperienceCard from "../ui/ExperienceCard";
 
 export default function Work() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  
+
   const experiences = [
+    {
+      title: "DevOps",
+      company: "MANAO Group - SIDINA",
+      period: "December 2024 - Present",
+      description: [
+        "Automating Non-Regression Tests (NRT) using Cypress",
+        "Leveraging AWS services for deployment and infrastructure management",
+        "Hands-on practice with Docker and Kubernetes for container orchestration",
+        "GitLab CI/CD for continuous integration and deployment",
+        "Implementing Ansible for configuration management and automation",
+      ],
+      tech: [
+        "JavaScript",
+        "Cypress",
+        "Tailwind CSS",
+        "Ansible",
+        "AWS",
+        "Docker",
+        "Kubernetes",
+        "GitLab CI",
+      ],
+    },
     {
       title: "FullStack JavaScript Developer",
       company: "MAR IT Consulting",
@@ -15,9 +37,16 @@ export default function Work() {
         "Developed and integrated dynamic role-based access control (RBAC) systems",
         "Utilized OCR technologies to extract structured data from invoices",
         "Designed and implemented interactive UI/UX components with Tailwind CSS and Quasar Framework",
-        "Proposed and executed new ideas for improving system functionality"
+        "Proposed and executed new ideas for improving system functionality",
       ],
-      tech: ["Vue.js", "Nuxt.js", "Node.js", "Supabase", "Tailwind CSS", "Quasar"]
+      tech: [
+        "Vue.js",
+        "Nuxt.js",
+        "Node.js",
+        "Supabase",
+        "Tailwind CSS",
+        "Quasar",
+      ],
     },
     {
       title: "Back-End Node.js Developer",
@@ -26,9 +55,9 @@ export default function Work() {
       description: [
         "Contributed to backend development using Node.js and GraphQL",
         "Implemented API endpoints to support front-end requirements",
-        "Ensured smooth data flow and integration with external services"
+        "Ensured smooth data flow and integration with external services",
       ],
-      tech: ["Node.js", "GraphQL", "API Development"]
+      tech: ["Node.js", "GraphQL", "API Development"],
     },
     {
       title: "DevOps Intern",
@@ -37,9 +66,9 @@ export default function Work() {
       description: [
         "Implemented CI/CD pipeline using Jenkins",
         "Automated deployment of Node.js API",
-        "Streamlined development workflow and deployment processes"
+        "Streamlined development workflow and deployment processes",
       ],
-      tech: ["Jenkins", "CI/CD", "Node.js", "DevOps"]
+      tech: ["Jenkins", "CI/CD", "Node.js", "DevOps"],
     },
     {
       title: "Network Administrator Intern",
@@ -48,10 +77,10 @@ export default function Work() {
       description: [
         "Implemented captive portal solution",
         "Developed dedicated application for captive portal",
-        "Managed network infrastructure and security"
+        "Managed network infrastructure and security",
       ],
-      tech: ["Networking", "Security", "Application Development"]
-    }
+      tech: ["Networking", "Security", "Application Development"],
+    },
   ];
 
   return (
@@ -63,7 +92,9 @@ export default function Work() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold text-textPrimary mb-12">Where I've Worked</h2>
+          <h2 className="text-3xl font-bold text-textPrimary mb-12">
+            Where I've Worked
+          </h2>
           <div className="space-y-12">
             {experiences.map((exp, index) => (
               <ExperienceCard key={index} {...exp} index={index} />
