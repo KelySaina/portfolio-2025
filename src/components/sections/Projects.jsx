@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import ProjectCard from "../ui/ProjectCard";
+import PersonalCard from "../ui/PersonalCard";
 
 export default function Projects() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -28,9 +29,35 @@ export default function Projects() {
       title: "Load Balancer & Failover",
       description:
         "Implemented high-availability solution using HA-Proxy for load balancing and failover capabilities",
-      image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.1WpJ9i6QpaemdUy5I_xMOgHaDt%26pid%3DApi&f=1&ipt=a302ef2ebcdd55e6e95a6c279638add88324c0ed9c275d4469c27627a7c512f0&ipo=images",
+      image:
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.1WpJ9i6QpaemdUy5I_xMOgHaDt%26pid%3DApi&f=1&ipt=a302ef2ebcdd55e6e95a6c279638add88324c0ed9c275d4469c27627a7c512f0&ipo=images",
       tech: ["HA-Proxy", "Load Balancing", "High Availability"],
       links: { github: "#", live: "#" },
+    },
+  ];
+
+  const otherProjects = [
+    {
+      title: "Swarm Cluster",
+      description:
+        "Set up a Docker Swarm cluster for container orchestration, enabling efficient deployment and management of containerized applications with Vagrant",
+      image: null,
+      tech: ["Docker", "Swarm", "Vagrant", "Virtualbox"],
+      links: {
+        github: "https://github.com/KelySaina/vagrant-swarm-cluster",
+        live: "#",
+      },
+    },
+    {
+      title: "Kubernetes Cluster",
+      description:
+        "Set up a Kubernetes cluster for container orchestration, enabling efficient deployment and management of containerized applications with Vagrant",
+      image: null,
+      tech: ["Minikube", "Vagrant", "Virtualbox"],
+      links: {
+        github: "https://github.com/KelySaina/vagrant-k8s-cluster",
+        live: "#",
+      },
     },
   ];
 
@@ -44,11 +71,16 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl font-bold text-textPrimary mb-12">
-            Academic Projects
+            Networking Projects
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <ProjectCard key={index} {...project} index={index} />
+            ))}
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {otherProjects.map((project, index) => (
+              <ProjectCard key={index} {...project} />
             ))}
           </div>
         </motion.div>
