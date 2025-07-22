@@ -16,18 +16,18 @@ const showCase = [
       live: "https://thierry-michael.vercel.app/",
     },
   },
-  {
-    title: "KS Service",
-    description:
-      "A self-hosted landing page for KS Service, showcasing services and features with a modern design.",
-    image:
-      "https://gquvatpjmhztbuyteita.supabase.co/storage/v1/object/public/portfolio-assets//ks-service.png",
-    tech: ["TypeScript", "JavaScript", "React", "Tailwind CSS", "Docker"],
-    links: {
-      github: "https://github.com/KelySaina/ks-service",
-      live: "https://ks-service.duckdns.org/",
-    },
-  },
+  // {
+  //   title: "KS Service",
+  //   description:
+  //     "A self-hosted landing page for KS Service, showcasing services and features with a modern design.",
+  //   image:
+  //     "https://gquvatpjmhztbuyteita.supabase.co/storage/v1/object/public/portfolio-assets//ks-service.png",
+  //   tech: ["TypeScript", "JavaScript", "React", "Tailwind CSS", "Docker"],
+  //   links: {
+  //     github: "https://github.com/KelySaina/ks-service",
+  //     live: "https://ks-service.duckdns.org/",
+  //   },
+  // },
 ];
 
 const webAI = [
