@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useState } from "react";
-import { MapPin, Phone, Download, Send, Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { MapPin, Phone, Download, Send, Loader2, CheckCircle, AlertCircle, ChevronDown } from "lucide-react";
 
 export default function Contact() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [cvOpen, setCvOpen] = useState(false);
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -69,7 +70,7 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
         >
           <div className="relative mb-12 text-left">
-            <span className="section-number">07</span>
+            <span className="section-number">08</span>
             <h2 className="text-3xl font-bold text-textPrimary relative z-10">
               Get In Touch
             </h2>
@@ -196,16 +197,41 @@ export default function Contact() {
                 </div>
               </div>
 
-              <motion.a
-                href="/CV_RAVELOMAHARAVO_2024_DEV.pdf"
-                className="mt-8 flex items-center justify-center gap-2 bg-secondary text-primary px-8 py-4 rounded-xl text-lg font-mono font-bold
-                       hover:bg-secondary/90 transition-all duration-300"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Download size={20} />
-                Download CV
-              </motion.a>
+              <div className="mt-8 relative">
+                <motion.button
+                  onClick={() => setCvOpen(!cvOpen)}
+                  className="flex items-center justify-center gap-2 w-full bg-secondary text-primary px-8 py-4 rounded-xl text-lg font-mono font-bold
+                         hover:bg-secondary/90 transition-all duration-300"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <Download size={20} />
+                  Download CV
+                  <ChevronDown size={16} className={`transition-transform duration-200 ${cvOpen ? "rotate-180" : ""}`} />
+                </motion.button>
+                {cvOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="absolute top-full left-0 right-0 mt-2 bg-white/[0.05] backdrop-blur-md rounded-xl border border-white/10 overflow-hidden z-10"
+                  >
+                    <a
+                      href="/CV_RAVELOMAHARAVO_EN.pdf"
+                      onClick={() => setCvOpen(false)}
+                      className="flex items-center gap-3 px-5 py-3.5 text-textPrimary hover:bg-secondary/10 transition-colors font-mono text-sm"
+                    >
+                      <span className="text-base">🇬🇧</span> English
+                    </a>
+                    <a
+                      href="/CV_RAVELOMAHARAVO_FR.pdf"
+                      onClick={() => setCvOpen(false)}
+                      className="flex items-center gap-3 px-5 py-3.5 text-textPrimary hover:bg-secondary/10 transition-colors font-mono text-sm border-t border-white/5"
+                    >
+                      <span className="text-base">🇫🇷</span> Français
+                    </a>
+                  </motion.div>
+                )}
+              </div>
             </div>
           </div>
 

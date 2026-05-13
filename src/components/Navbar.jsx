@@ -77,7 +77,11 @@ export default function Navbar() {
                 >
                   <a
                     href={`#${item.toLowerCase()}`}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMobileOpen(false);
+                      document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
+                    }}
                     className="block text-textPrimary hover:text-secondary transition-colors px-4 py-3 rounded-lg hover:bg-secondary/5 font-mono"
                   >
                     <span className="text-secondary mr-2 text-sm">

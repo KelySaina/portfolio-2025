@@ -225,7 +225,7 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
         >
           <div className="relative mb-12">
-            <span className="section-number">04</span>
+            <span className="section-number">05</span>
             <h2 className="text-3xl font-bold text-textPrimary relative z-10">
               Networking & Infrastructure Projects
             </h2>

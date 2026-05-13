@@ -45,7 +45,7 @@ export default function Certifications() {
           transition={{ duration: 0.5 }}
         >
           <div className="relative mb-12">
-            <span className="section-number">06</span>
+            <span className="section-number">07</span>
             <h2 className="text-3xl font-bold text-textPrimary relative z-10">
               Education & Certifications
             </h2>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const roles = [
   "Full Stack Developer",
@@ -44,6 +44,17 @@ function TypeWriter({ words }) {
 }
 
 export default function Hero() {
+  const [cvOpen, setCvOpen] = useState(false);
+  const cvRef = useRef(null);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (cvRef.current && !cvRef.current.contains(e.target)) setCvOpen(false);
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
   const scrollToWork = () => {
     document.getElementById("work").scrollIntoView({ behavior: "smooth" });
   };
@@ -118,28 +129,62 @@ export default function Hero() {
                 />
               </svg>
             </motion.button>
-            <motion.a
-              href="/CV_RAVELOMAHARAVO_2024_DEV.pdf"
-              className="flex gap-2 items-center text-primary font-bold bg-secondary px-7 py-3.5 rounded-lg font-mono text-sm hover:bg-secondary/90 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="size-5"
+            <div className="relative" ref={cvRef}>
+              <motion.button
+                onClick={() => setCvOpen(!cvOpen)}
+                className="flex gap-2 items-center text-primary font-bold bg-secondary px-7 py-3.5 rounded-lg font-mono text-sm hover:bg-secondary/90 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
-                />
-              </svg>
-              Download CV
-            </motion.a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="size-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                  />
+                </svg>
+                Download CV
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className={`size-4 transition-transform duration-200 ${cvOpen ? "rotate-180" : ""}`}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+              </motion.button>
+              {cvOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="absolute top-full left-0 right-0 mt-2 bg-primary/95 backdrop-blur-md rounded-xl border border-white/10 overflow-hidden z-50"
+                >
+                  <a
+                    href="/CV_RAVELOMAHARAVO_EN.pdf"
+                    onClick={() => setCvOpen(false)}
+                    className="flex items-center gap-3 px-5 py-3 text-textPrimary hover:bg-secondary/10 transition-colors font-mono text-sm"
+                  >
+                    🇬🇧 English
+                  </a>
+                  <a
+                    href="/CV_RAVELOMAHARAVO_FR.pdf"
+                    onClick={() => setCvOpen(false)}
+                    className="flex items-center gap-3 px-5 py-3 text-textPrimary hover:bg-secondary/10 transition-colors font-mono text-sm border-t border-white/5"
+                  >
+                    🇫🇷 Français
+                  </a>
+                </motion.div>
+              )}
+            </div>
           </div>
         </motion.div>
       </div>

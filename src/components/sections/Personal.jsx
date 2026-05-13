@@ -268,7 +268,7 @@ export default function Personal() {
           transition={{ duration: 0.6 }}
         >
           <div className="relative mb-12">
-            <span className="section-number">05</span>
+            <span className="section-number">06</span>
             <h2 className="text-3xl font-bold text-textPrimary relative z-10">
               Software Development Projects
             </h2>
@@ -276,7 +276,7 @@ export default function Personal() {
           </div>
 
           {/* Tab bar */}
-          <div className="flex flex-wrap gap-2 mb-8">
+          <div className="flex gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0 md:overflow-visible md:flex-wrap">
             {categories.map((cat) => {
               const Icon = cat.icon;
               const isActive = active === cat.key;
@@ -286,7 +286,7 @@ export default function Personal() {
                   onClick={() => setActive(cat.key)}
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.97 }}
-                  className={`relative flex items-center gap-2 px-4 py-2.5 rounded-lg font-mono text-xs transition-all duration-300 ${
+                  className={`relative flex items-center gap-2 px-4 py-2.5 rounded-lg font-mono text-xs transition-all duration-300 shrink-0 whitespace-nowrap ${
                     isActive
                       ? "text-primary bg-secondary"
                       : "text-textSecondary hover:text-textPrimary bg-white/[0.03] border border-white/5 hover:border-white/10"
@@ -314,7 +314,7 @@ export default function Personal() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.25 }}
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
             >
               {activeCategory.projects.map((project, i) => (
                 <ProjectCard key={project.title} project={project} index={i} />

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>
+  @page { size: A4; margin: 18mm 16mm 14mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #1a1a2e;
+    font-size: 9.5pt;
+    line-height: 1.45;
+    background: #fff;
+  }
+  .page {
+    width: 100%;
+    position: relative;
+  }
+  /* Accent bar — first page only */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 5px;
+    background: linear-gradient(90deg, #0a192f, #5eaeff, #0a192f);
+  }
+
+  /* Page break control */
+  .section { break-inside: avoid; }
+  .exp-item { break-inside: avoid; }
+  .edu-item { break-inside: avoid; }
+  .proj-item { break-inside: avoid; }
+
+  /* Header */
+  .header { margin-bottom: 14px; }
+  .header h1 {
+    font-size: 22pt;
+    font-weight: 800;
+    color: #0a192f;
+    letter-spacing: -0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitle {
+    font-size: 11pt;
+    color: #5eaeff;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .header .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 8.5pt;
+    color: #555;
+  }
+  .header .contact-row span { display: inline-flex; align-items: center; gap: 3px; }
+
+  /* Section */
+  .section { margin-bottom: 12px; }
+  .section-title {
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #0a192f;
+    border-bottom: 2px solid #5eaeff;
+    padding-bottom: 3px;
+    margin-bottom: 7px;
+  }
+
+  /* Summary */
+  .summary { color: #333; font-size: 9pt; }
+
+  /* Skills grid */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 20px;
+  }
+  .skill-row { display: flex; gap: 6px; font-size: 8.5pt; }
+  .skill-label { font-weight: 700; color: #0a192f; min-width: 105px; }
+  .skill-value { color: #444; }
+
+  /* Experience */
+  .exp-item { margin-bottom: 9px; }
+  .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1px; }
+  .exp-title { font-weight: 700; font-size: 10pt; color: #0a192f; }
+  .exp-period { font-size: 8pt; color: #5eaeff; font-weight: 600; white-space: nowrap; }
+  .exp-company { font-size: 8.5pt; color: #666; font-style: italic; margin-bottom: 3px; }
+  .exp-list { padding-left: 14px; }
+  .exp-list li { margin-bottom: 1.5px; color: #333; font-size: 8.5pt; }
+  .exp-list li::marker { color: #5eaeff; }
+
+  /* Education */
+  .edu-item { margin-bottom: 6px; }
+  .edu-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .edu-degree { font-weight: 700; font-size: 9.5pt; color: #0a192f; }
+  .edu-year { font-size: 8pt; color: #5eaeff; font-weight: 600; }
+  .edu-school { font-size: 8.5pt; color: #666; font-style: italic; }
+  .edu-note { font-size: 8pt; color: #444; margin-top: 1px; }
+
+  /* Certifications */
+  .cert-item { display: flex; justify-content: space-between; font-size: 9pt; margin-bottom: 3px; }
+  .cert-name { font-weight: 600; color: #0a192f; }
+  .cert-detail { color: #666; font-size: 8pt; }
+
+  /* Projects */
+  .proj-item { margin-bottom: 5px; }
+  .proj-name { font-weight: 700; font-size: 9pt; color: #0a192f; }
+  .proj-desc { font-size: 8.5pt; color: #444; }
+  .proj-tech { font-size: 7.5pt; color: #5eaeff; font-family: 'Consolas', monospace; }
+
+  /* Languages */
+  .lang-row { display: flex; gap: 24px; font-size: 9pt; }
+  .lang-item { display: flex; gap: 6px; }
+  .lang-name { font-weight: 600; color: #0a192f; }
+  .lang-level { color: #666; }
+
+  /* Two column layout */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <!-- Header -->
+  <div class="header">
+    <h1>Thierry Michaël RAVELOMAHARAVO</h1>
+    <div class="subtitle">Full Stack Developer & DevOps Engineer</div>
+    <div class="contact-row">
+      <span>thierrymichael2001@gmail.com</span>
+      <span>+261 34 88 359 57</span>
+      <span>Antsirabe, Madagascar</span>
+      <span>thierry-michael.vercel.app</span>
+      <span>github.com/KelySaina</span>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="section">
+    <div class="section-title">Profile</div>
+    <p class="summary">Full Stack Developer and DevOps Engineer with hands-on experience across the entire software stack. Google Cloud Certified Associate Cloud Engineer. Specialized in building containerized platform ecosystems, CI/CD pipelines, and full-stack web applications using modern JavaScript/TypeScript frameworks.</p>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row"><span class="skill-label">Frontend:</span><span class="skill-value">React, Vue 3, Next.js, Nuxt.js, Tailwind CSS, TypeScript</span></div>
+      <div class="skill-row"><span class="skill-label">Backend:</span><span class="skill-value">Node.js, NestJS, Express, PHP, CodeIgniter, Lumen, GraphQL, Prisma</span></div>
+      <div class="skill-row"><span class="skill-label">DevOps & CI/CD:</span><span class="skill-value">Docker, Docker Compose, Kubernetes, Nginx, Jenkins, GitLab CI, GitHub Actions, Ansible, Bash</span></div>
+      <div class="skill-row"><span class="skill-label">Cloud & Platforms:</span><span class="skill-value">Google Cloud Platform (ACE), AWS (EC2, S3), Vercel, Supabase</span></div>
+      <div class="skill-row"><span class="skill-label">Databases:</span><span class="skill-value">PostgreSQL, MariaDB, MySQL, MinIO</span></div>
+      <div class="skill-row"><span class="skill-label">Testing & QA:</span><span class="skill-value">Cypress, Faker.js, SonarQube</span></div>
+      <div class="skill-row"><span class="skill-label">Languages:</span><span class="skill-value">JavaScript, TypeScript, Python, Java, PHP, Bash</span></div>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <div class="section">
+    <div class="section-title">Professional Experience</div>
+    
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-title">Project Lead — DevOps & QA</span>
+        <span class="exp-period">Dec 2024 - Present</span>
+      </div>
+      <div class="exp-company">MANAO Group - SIDINA</div>
+      <ul class="exp-list">
+        <li>Leading and coordinating DevOps and QA teams, overseeing project delivery, tooling strategy, and quality standards</li>
+        <li>Architected an interconnected Docker platform ecosystem with shared networking across 5+ microservices</li>
+        <li>Built 'ocompose' — a reproducible Docker mini-OS platform with CLI + Web UI for multi-instance dev environments</li>
+        <li>Developed 'DB Docker Server' — a multi-engine database manager with React Web UI, SSE real-time logs, and MinIO backup sync</li>
+        <li>Created comprehensive Cypress E2E test suites for Paie and Compta with auto-generated test data via Faker.js</li>
+        <li>Containerized legacy PHP 5.6/7.4 CodeIgniter apps with multi-network Docker Compose and GHCR CI/CD</li>
+        <li>Deployed self-hosted n8n automation platform to sync Supabase data and trigger GitLab CI/CD pipelines</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-title">FullStack JavaScript Developer</span>
+        <span class="exp-period">Aug - Nov 2024</span>
+      </div>
+      <div class="exp-company">MAR IT Consulting</div>
+      <ul class="exp-list">
+        <li>Built secure, scalable web applications using Vue3, Nuxt.js, Node.js, and Supabase</li>
+        <li>Developed and integrated dynamic role-based access control (RBAC) systems</li>
+        <li>Utilized OCR technologies to extract structured data from invoices</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-title">Back-End Node.js Developer</span>
+        <span class="exp-period">Jan 2024</span>
+      </div>
+      <div class="exp-company">OnlyTravaux</div>
+      <ul class="exp-list">
+        <li>Contributed to backend development using Node.js and GraphQL</li>
+        <li>Implemented API endpoints to support front-end requirements</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-title">DevOps Intern</span>
+        <span class="exp-period">Oct - Dec 2023</span>
+      </div>
+      <div class="exp-company">OpenData Madagascar</div>
+      <ul class="exp-list">
+        <li>Implemented CI/CD pipeline using Jenkins for automated Node.js API deployment</li>
+        <li>Streamlined development workflow and deployment processes</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-title">Network Administrator Intern</span>
+        <span class="exp-period">Oct - Dec 2022</span>
+      </div>
+      <div class="exp-company">ESD</div>
+      <ul class="exp-list">
+        <li>Implemented captive portal solution with dedicated application</li>
+        <li>Managed network infrastructure and security</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    
+    <div class="edu-item">
+      <div class="edu-header">
+        <span class="edu-degree">Master's Degree in Computer Science</span>
+        <span class="edu-year">2025</span>
+      </div>
+      <div class="edu-school">École Nationale d'Informatique</div>
+      <div class="edu-note">Thesis on Microservices Architecture — 19.75/20. Summa Cum Laude.</div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-header">
+        <span class="edu-degree">Bachelor of Computer Science</span>
+        <span class="edu-year">2023</span>
+      </div>
+      <div class="edu-school">École Nationale d'Informatique</div>
+      <div class="edu-note">Highest honors for thesis on CI/CD of a Node.js API with Jenkins.</div>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    
+    <div class="cert-item">
+      <span class="cert-name">Google Cloud Associate Cloud Engineer (ACE)</span>
+      <span class="cert-detail">Google Cloud Platform — October 2024</span>
+    </div>
+  </div>
+
+  <!-- Languages -->
+  <div class="section">
+    <div class="section-title">Languages</div>
+    <div class="lang-row">
+      <div class="lang-item"><span class="lang-name">French</span><span class="lang-level">Native</span></div>
+        <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Professional</span></div>
+        <div class="lang-item"><span class="lang-name">Malagasy</span><span class="lang-level">Native</span></div>
+    </div>
+  </div>
+
+  <!-- Key Projects -->
+  <div class="section">
+    <div class="section-title">Personal Projects</div>
+    
+    <div class="proj-item">
+      <span class="proj-name">AKD-MI</span> — <span class="proj-desc">Full-stack institution directory platform with GPS mapping, RBAC, and GraphQL API</span>
+      <div class="proj-tech">Next.js, NestJS, GraphQL, Prisma, PostgreSQL, Docker</div>
+    </div>
+
+    <div class="proj-item">
+      <span class="proj-name">ASSBEP Health Platform</span> — <span class="proj-desc">Multilingual health platform with admin backoffice, REST API, and CI/CD to AWS EC2</span>
+      <div class="proj-tech">Vue 3, NestJS, Prisma, PostgreSQL, MinIO, Docker, GitHub Actions</div>
+    </div>
+
+    <div class="proj-item">
+      <span class="proj-name">DB Docker Server</span> — <span class="proj-desc">Multi-engine database manager (MariaDB, MySQL, PostgreSQL) with React Web UI, SSE real-time logs, and MinIO backup sync</span>
+      <div class="proj-tech">Node.js, React, Vite, Docker Compose, Bash, PostgreSQL, MinIO</div>
+    </div>
+
+    <div class="proj-item">
+      <span class="proj-name">Konnect IDP/SSO</span> — <span class="proj-desc">Identity Provider implementing OAuth 2.0, OpenID Connect, and TOTP-based MFA</span>
+      <div class="proj-tech">Node.js, Express, MySQL, JWT, OAuth 2.0, Docker</div>
+    </div>
+
+    <div class="proj-item">
+      <span class="proj-name">ocompose</span> — <span class="proj-desc">Reproducible Docker platform with CLI + Web UI for multi-instance dev environments</span>
+      <div class="proj-tech">Bash, Docker Compose, Nginx, PHP-FPM, Node.js, Python</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -23,7 +23,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
         >
           <div className="relative mb-12">
-            <span className="section-number">00</span>
+            <span className="section-number">01</span>
             <h2 className="text-3xl font-bold text-textPrimary relative z-10">
               About Me
             </h2>

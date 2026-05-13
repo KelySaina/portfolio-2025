@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const techStack = [
   {
@@ -127,8 +127,28 @@ const techStack = [
 
 function TechWheel({ items, inView }) {
   const [hovered, setHovered] = useState(null);
-  const radius = 260;
-  const iconSize = 56;
+  const [size, setSize] = useState({ radius: 260, iconSize: 56 });
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      if (w < 480) {
+        setSize({ radius: 120, iconSize: 32 });
+      } else if (w < 640) {
+        setSize({ radius: 150, iconSize: 36 });
+      } else if (w < 768) {
+        setSize({ radius: 180, iconSize: 40 });
+      } else {
+        setSize({ radius: 260, iconSize: 56 });
+      }
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const { radius, iconSize } = size;
 
   return (
     <div className="relative flex items-center justify-center">
@@ -139,7 +159,7 @@ function TechWheel({ items, inView }) {
         {/* Center label */}
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
-            className="text-center px-6 max-w-[240px]"
+            className="text-center px-4 max-w-[180px] md:max-w-[240px] md:px-6"
             key={hovered?.name || "default"}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -147,10 +167,10 @@ function TechWheel({ items, inView }) {
           >
             {hovered ? (
               <>
-                <p className="text-secondary font-bold text-lg font-mono mb-1">
+                <p className="text-secondary font-bold text-sm md:text-lg font-mono mb-1">
                   {hovered.name}
                 </p>
-                <p className="text-textSecondary text-sm leading-relaxed">
+                <p className="text-textSecondary text-xs md:text-sm leading-relaxed">
                   {hovered.desc}
                 </p>
               </>
@@ -236,7 +256,7 @@ export default function TechStack() {
           transition={{ duration: 0.6 }}
         >
           <div className="relative mb-12">
-            <span className="section-number">01</span>
+            <span className="section-number">02</span>
             <h2 className="text-3xl font-bold text-textPrimary relative z-10">
               Technologies I Work With
             </h2>

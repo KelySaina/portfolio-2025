@@ -4,17 +4,17 @@ import { useInView } from "react-intersection-observer";
 function TimelineCard({ title, company, period, description, tech, index, isLeft }) {
   const titleBlock = (
     <div className={isLeft ? "md:text-right md:pr-10" : "md:text-left md:pl-10"}>
-      <h3 className="text-xl font-bold text-textPrimary mb-1">{title}</h3>
+      <h3 className="text-lg md:text-xl font-bold text-textPrimary mb-1">{title}</h3>
       <p className="text-secondary/80 font-medium text-sm">{company}</p>
     </div>
   );
 
   const descBlock = (
     <div className={isLeft ? "md:pl-10" : "md:pr-10"}>
-      <div className="glow-card bg-white/[0.03] backdrop-blur-sm p-5 rounded-xl border border-white/5">
+      <div className="glow-card bg-white/[0.03] backdrop-blur-sm p-4 md:p-5 rounded-xl border border-white/5">
         <ul className="space-y-2 mb-4">
           {description.map((item, i) => (
-            <li key={i} className="text-textSecondary text-sm flex items-start">
+            <li key={i} className="text-textSecondary text-xs md:text-sm flex items-start">
               <span className="text-secondary mr-2 mt-0.5 shrink-0">▹</span>
               {item}
             </li>
@@ -24,7 +24,7 @@ function TimelineCard({ title, company, period, description, tech, index, isLeft
           {tech.map((item) => (
             <span
               key={item}
-              className="text-xs text-secondary bg-secondary/10 px-2.5 py-1 rounded-full font-mono"
+              className="text-[10px] md:text-xs text-secondary bg-secondary/10 px-2 py-0.5 md:px-2.5 md:py-1 rounded-full font-mono"
             >
               {item}
             </span>
@@ -35,8 +35,8 @@ function TimelineCard({ title, company, period, description, tech, index, isLeft
   );
 
   return (
-    <div className="relative w-full mb-16 last:mb-0">
-      {/* Date badge on the center line */}
+    <div className="relative w-full mb-10 md:mb-16 last:mb-0">
+      {/* Date badge on the center line (desktop) */}
       <div className="absolute left-1/2 -translate-x-1/2 top-0 z-20 hidden md:flex">
         <div className="bg-secondary/10 border border-secondary/30 rounded-full px-4 py-1.5 backdrop-blur-sm">
           <span className="text-secondary text-xs font-mono whitespace-nowrap font-semibold">
@@ -45,15 +45,39 @@ function TimelineCard({ title, company, period, description, tech, index, isLeft
         </div>
       </div>
 
-      {/* Mobile date */}
-      <div className="md:hidden mb-3">
+      {/* Mobile: left-aligned single column */}
+      <div className="md:hidden pl-6">
         <span className="text-secondary text-xs font-mono bg-secondary/10 border border-secondary/30 px-3 py-1 rounded-full">
           {period}
         </span>
+        <div className="mt-3">
+          <h3 className="text-lg font-bold text-textPrimary mb-1">{title}</h3>
+          <p className="text-secondary/80 font-medium text-sm mb-3">{company}</p>
+        </div>
+        <div className="glow-card bg-white/[0.03] backdrop-blur-sm p-4 rounded-xl border border-white/5">
+          <ul className="space-y-2 mb-4">
+            {description.map((item, i) => (
+              <li key={i} className="text-textSecondary text-xs flex items-start">
+                <span className="text-secondary mr-2 mt-0.5 shrink-0">▹</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-wrap gap-1.5">
+            {tech.map((item) => (
+              <span
+                key={item}
+                className="text-[10px] text-secondary bg-secondary/10 px-2 py-0.5 rounded-full font-mono"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Two-column row: isLeft = title on left, desc on right */}
-      <div className="grid md:grid-cols-2 gap-0 md:gap-0 md:pt-12">
+      {/* Desktop: two-column alternating */}
+      <div className="hidden md:grid md:grid-cols-2 md:pt-12">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -91,7 +115,6 @@ export default function Work() {
         "Built a QA Context toolkit for AI-assisted test compliance auditing and CSV-to-SQL import pipeline covering 20+ test codification files",
         "Developed a SonarQube Runner web UI for triggering code analysis scans with real-time streamed output",
         "Containerized legacy PHP 5.6/7.4 CodeIgniter apps with multi-network Docker Compose configurations and GHCR CI/CD publishing",
-        "Built a Konnect IDP/SSO service implementing OAuth 2.0, OpenID Connect, and TOTP-based MFA with admin dashboard",
         "Deployed self-hosted n8n automation platform to sync Supabase data to third-party apps and trigger GitLab CI/CD pipelines via webhook hooks",
         "Leveraging AWS services and GitLab CI/CD for cloud deployments and pipeline automation",
       ],
@@ -116,7 +139,6 @@ export default function Work() {
         "Ansible",
         "SonarQube",
         "n8n",
-        "OAuth 2.0",
         "Webhooks",
       ],
     },
@@ -185,7 +207,7 @@ export default function Work() {
           transition={{ duration: 0.5 }}
         >
           <div className="relative mb-12">
-            <span className="section-number">02</span>
+            <span className="section-number">03</span>
             <h2 className="text-3xl font-bold text-textPrimary relative z-10">
               Where I've Worked
             </h2>

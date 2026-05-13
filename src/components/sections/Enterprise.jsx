@@ -347,7 +347,7 @@ export default function Enterprise() {
           transition={{ duration: 0.5 }}
         >
           <div className="relative mb-12">
-            <span className="section-number">03</span>
+            <span className="section-number">04</span>
             <h2 className="text-3xl font-bold text-textPrimary relative z-10">
               Enterprise Platform Projects
             </h2>

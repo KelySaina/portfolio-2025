@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 :root {
   scroll-behavior: smooth;
 }
@@ -92,12 +100,18 @@ body {
 .timeline-line::before {
   content: '';
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   top: 0;
   bottom: 0;
   width: 2px;
   background: linear-gradient(to bottom, rgba(94, 174, 255, 0.4), rgba(94, 174, 255, 0.05));
+}
+
+@media (min-width: 768px) {
+  .timeline-line::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 /* Floating animation */
