@@ -1,16 +1,89 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import ExperienceCard from "../ui/ExperienceCard";
+
+function TimelineCard({ title, company, period, description, tech, index, isLeft }) {
+  const titleBlock = (
+    <div className={isLeft ? "md:text-right md:pr-10" : "md:text-left md:pl-10"}>
+      <h3 className="text-xl font-bold text-textPrimary mb-1">{title}</h3>
+      <p className="text-secondary/80 font-medium text-sm">{company}</p>
+    </div>
+  );
+
+  const descBlock = (
+    <div className={isLeft ? "md:pl-10" : "md:pr-10"}>
+      <div className="glow-card bg-white/[0.03] backdrop-blur-sm p-5 rounded-xl border border-white/5">
+        <ul className="space-y-2 mb-4">
+          {description.map((item, i) => (
+            <li key={i} className="text-textSecondary text-sm flex items-start">
+              <span className="text-secondary mr-2 mt-0.5 shrink-0">▹</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div className="flex flex-wrap gap-1.5">
+          {tech.map((item) => (
+            <span
+              key={item}
+              className="text-xs text-secondary bg-secondary/10 px-2.5 py-1 rounded-full font-mono"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="relative w-full mb-16 last:mb-0">
+      {/* Date badge on the center line */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-0 z-20 hidden md:flex">
+        <div className="bg-secondary/10 border border-secondary/30 rounded-full px-4 py-1.5 backdrop-blur-sm">
+          <span className="text-secondary text-xs font-mono whitespace-nowrap font-semibold">
+            {period}
+          </span>
+        </div>
+      </div>
+
+      {/* Mobile date */}
+      <div className="md:hidden mb-3">
+        <span className="text-secondary text-xs font-mono bg-secondary/10 border border-secondary/30 px-3 py-1 rounded-full">
+          {period}
+        </span>
+      </div>
+
+      {/* Two-column row: isLeft = title on left, desc on right */}
+      <div className="grid md:grid-cols-2 gap-0 md:gap-0 md:pt-12">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.12 }}
+        >
+          {isLeft ? titleBlock : descBlock}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.12 + 0.1 }}
+        >
+          {isLeft ? descBlock : titleBlock}
+        </motion.div>
+      </div>
+    </div>
+  );
+}
 
 export default function Work() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const experiences = [
     {
-      title: "DevOps Engineer",
+      title: "Chef de Projet — DevOps & QA",
       company: "MANAO Group - SIDINA",
-      period: "December 2024 - Present",
+      period: "Dec 2024 - Present",
       description: [
+        "Leading and coordinating the DevOps and QA teams, overseeing project delivery, tooling strategy, and quality standards",
         "Architected an interconnected Docker platform ecosystem with shared networking across 5+ microservices (auth, licences, accounting, client portal)",
         "Built 'ocompose' — a reproducible Docker mini-OS platform with CLI + Web UI for multi-instance dev environments supporting PHP, Node.js, Python runtimes",
         "Developed 'DB Docker Server' — a multi-engine database manager (MariaDB, MySQL, PostgreSQL) with React Web UI, SSE real-time logs, and MinIO backup sync",
@@ -50,7 +123,7 @@ export default function Work() {
     {
       title: "FullStack JavaScript Developer",
       company: "MAR IT Consulting",
-      period: "August 2024 - November 2024",
+      period: "Aug - Nov 2024",
       description: [
         "Built secure, scalable web and mobile friendly applications using Vue3, Nuxt.js, Node.js, and Supabase",
         "Developed and integrated dynamic role-based access control (RBAC) systems",
@@ -70,7 +143,7 @@ export default function Work() {
     {
       title: "Back-End Node.js Developer",
       company: "OnlyTravaux",
-      period: "January 2024",
+      period: "Jan 2024",
       description: [
         "Contributed to backend development using Node.js and GraphQL",
         "Implemented API endpoints to support front-end requirements",
@@ -81,7 +154,7 @@ export default function Work() {
     {
       title: "DevOps Intern",
       company: "OpenData Madagascar",
-      period: "October 2023 - December 2023",
+      period: "Oct - Dec 2023",
       description: [
         "Implemented CI/CD pipeline using Jenkins",
         "Automated deployment of Node.js API",
@@ -92,7 +165,7 @@ export default function Work() {
     {
       title: "Network Administrator Intern",
       company: "ESD",
-      period: "October 2022 - December 2022",
+      period: "Oct - Dec 2022",
       description: [
         "Implemented captive portal solution",
         "Developed dedicated application for captive portal",
@@ -104,7 +177,7 @@ export default function Work() {
 
   return (
     <section id="work" className="py-24">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -118,9 +191,14 @@ export default function Work() {
             </h2>
             <div className="w-20 h-1 bg-secondary/50 rounded mt-3" />
           </div>
-          <div className="timeline-line">
+          <div className="timeline-line relative">
             {experiences.map((exp, index) => (
-              <ExperienceCard key={index} {...exp} index={index} />
+              <TimelineCard
+                key={index}
+                {...exp}
+                index={index}
+                isLeft={index % 2 === 0}
+              />
             ))}
           </div>
         </motion.div>

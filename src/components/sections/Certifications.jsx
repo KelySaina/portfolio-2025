@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, GraduationCap, Award } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 
 export default function Certifications() {
@@ -12,8 +12,7 @@ export default function Certifications() {
       date: "December 2025",
       description:
         "Thesis on Microservices Architecture — scored 19.75/20. Mention: Très Honorable avec Félicitations du Jury (Summa Cum Laude).",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Logo_eni.png/220px-Logo_eni.png",
+      icon: GraduationCap,
       link: null,
     },
     {
@@ -22,8 +21,7 @@ export default function Certifications() {
       date: "2022-2023",
       description:
         "Achieved highest honors for thesis on CI/CD of a Node.js API with Jenkins.",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Logo_eni.png/220px-Logo_eni.png",
+      icon: GraduationCap,
       link: null,
     },
     {
@@ -32,8 +30,7 @@ export default function Certifications() {
       date: "October 2024",
       description:
         "Expertise in deploying and managing cloud infrastructure, performance optimization, and security implementation.",
-      image:
-        "https://images.credly.com/size/340x340/images/08096465-cbfc-4c3e-93e5-93c5aa61f23e/image.png",
+      icon: Award,
       link: "https://www.credly.com/badges/1d2f4a1e-e3e7-4f87-abb1-2fc3921a56e9",
     },
   ];
@@ -48,56 +45,56 @@ export default function Certifications() {
           transition={{ duration: 0.5 }}
         >
           <div className="relative mb-12">
-            <span className="section-number">05</span>
+            <span className="section-number">06</span>
             <h2 className="text-3xl font-bold text-textPrimary relative z-10">
               Education & Certifications
             </h2>
             <div className="w-20 h-1 bg-secondary/50 rounded mt-3" />
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glow-card bg-white/[0.03] backdrop-blur-sm rounded-xl overflow-hidden border border-white/5 group"
-              >
-                <div className="bg-white/95 flex items-center justify-center p-6">
-                  <img
-                    src={cert.image}
-                    alt={cert.title}
-                    className="w-full h-32 object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                <div className="p-5">
-                  <p className="text-secondary text-xs font-mono mb-1">
-                    {cert.date}
-                  </p>
-                  <h3 className="text-lg font-bold text-textPrimary mb-1">
-                    {cert.title}
-                  </h3>
-                  <p className="text-secondary/70 text-sm italic mb-3">
-                    {cert.issuer}
-                  </p>
-                  <p className="text-textSecondary text-sm leading-relaxed">
-                    {cert.description}
-                  </p>
-                  {cert.link && (
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-1 text-sm text-secondary/80 hover:text-secondary font-medium transition-colors"
-                    >
-                      View Certificate
-                      <ExternalLink size={14} />
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+            {certifications.map((cert, index) => {
+              const Icon = cert.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="glow-card bg-white/[0.03] backdrop-blur-sm rounded-xl overflow-hidden border border-white/5 group"
+                >
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 bg-secondary/10 rounded-xl">
+                        <Icon size={24} className="text-secondary" />
+                      </div>
+                      <p className="text-secondary text-xs font-mono">
+                        {cert.date}
+                      </p>
+                    </div>
+                    <h3 className="text-lg font-bold text-textPrimary mb-1">
+                      {cert.title}
+                    </h3>
+                    <p className="text-secondary/70 text-sm italic mb-3">
+                      {cert.issuer}
+                    </p>
+                    <p className="text-textSecondary text-sm leading-relaxed">
+                      {cert.description}
+                    </p>
+                    {cert.link && (
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex items-center gap-1 text-sm text-secondary/80 hover:text-secondary font-medium transition-colors"
+                      >
+                        View Certificate
+                        <ExternalLink size={14} />
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </div>

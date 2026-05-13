@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import TechStack from "./components/sections/TechStack";
 import Work from "./components/sections/Work";
 import Projects from "./components/sections/Projects";
 import Enterprise from "./components/sections/Enterprise";
@@ -34,6 +35,7 @@ function App() {
         <main>
           <Hero />
           <About />
+          <TechStack />
           <Work />
           <Enterprise />
           <Projects />

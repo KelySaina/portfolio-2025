@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/send",
+      "destination": "https://ks-mailer.vercel.app/api/send"
+    }
+  ]
+}
