@@ -16,18 +16,39 @@ const showCase = [
       live: "https://thierry-michael.vercel.app/",
     },
   },
-  // {
-  //   title: "KS Service",
-  //   description:
-  //     "A self-hosted landing page for KS Service, showcasing services and features with a modern design.",
-  //   image:
-  //     "https://gquvatpjmhztbuyteita.supabase.co/storage/v1/object/public/portfolio-assets//ks-service.png",
-  //   tech: ["TypeScript", "JavaScript", "React", "Tailwind CSS", "Docker"],
-  //   links: {
-  //     github: "https://github.com/KelySaina/ks-service",
-  //     live: "https://ks-service.duckdns.org/",
-  //   },
-  // },
+  {
+    title: "AKD-MI — Institution Directory",
+    description:
+      "Full-stack platform for browsing and managing institutional data with GPS mapping, draft/publish workflows, RBAC, and a modular architecture. Features Leaflet maps, advanced search, and Supabase Auth (migrating to Passport.js + JWT).",
+    image: null,
+    tech: ["Next.js", "React", "TypeScript", "NestJS", "GraphQL", "Prisma", "PostgreSQL", "Tailwind CSS", "Leaflet", "Docker", "Cypress"],
+    links: {
+      github: "#",
+      live: "#",
+    },
+  },
+  {
+    title: "ASSBEP — Health Platform",
+    description:
+      "Multilingual (EN/FR) health platform with a public-facing website, admin backoffice, and REST API. Features dynamic i18n via a translation table pattern, RBAC (Super Admin/Editor/Translator), media library with MinIO, and CI/CD via GitHub Actions to AWS EC2.",
+    image: null,
+    tech: ["Vue 3", "Vite", "NestJS", "Prisma", "PostgreSQL", "MinIO", "Caddy", "Docker", "GitHub Actions", "AWS EC2"],
+    links: {
+      github: "#",
+      live: "#",
+    },
+  },
+  {
+    title: "Konnect IDP/SSO Service",
+    description:
+      "Full-featured Identity Provider and Single Sign-On service implementing OAuth 2.0, OpenID Connect, and Multi-Factor Authentication. Centralized auth backend with admin dashboard for managing users and OAuth clients.",
+    image: null,
+    tech: ["Node.js", "Express", "MySQL", "JWT", "OAuth 2.0", "OIDC", "TOTP/MFA", "Docker", "Helmet"],
+    links: {
+      github: "#",
+      live: "#",
+    },
+  },
 ];
 
 const webAI = [
@@ -180,16 +201,20 @@ export default function Personal() {
 
   return (
     <section id="personal-projects" className="py-24 text-white">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, x: -100 }}
+          initial={{ opacity: 0, x: -50 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-bold mb-10 text-textPrimary">
-            Software Development Projects
-          </h2>
+          <div className="relative mb-12">
+            <span className="section-number">04</span>
+            <h2 className="text-3xl font-bold text-textPrimary relative z-10">
+              Software Development Projects
+            </h2>
+            <div className="w-20 h-1 bg-secondary/50 rounded mt-3" />
+          </div>
           <div className="mb-5 ml-5">
             <h3 className="text-2xl font-bold mb-5 flex items-center gap-2">
               <ListVideo size={36} />

@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Work from "./components/sections/Work";
 import Projects from "./components/sections/Projects";
+import Enterprise from "./components/sections/Enterprise";
 import Personal from "./components/sections/Personal";
 import Certifications from "./components/sections/Certifications";
 import Contact from "./components/sections/Contact";
@@ -34,6 +35,7 @@ function App() {
           <Hero />
           <About />
           <Work />
+          <Enterprise />
           <Projects />
           <Personal />
           <Certifications />
@@ -44,9 +46,12 @@ function App() {
         {showScrollButton && (
           <motion.button
             onClick={scrollToTop}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="fixed bottom-4 right-4 w-12 h-12 p-3 border border-secondary text-white rounded-full shadow-lg hover:bg-secondary/10"
+            className="fixed bottom-6 right-6 w-12 h-12 p-3 bg-secondary/10 backdrop-blur-sm border border-secondary/30 text-secondary rounded-xl shadow-lg hover:bg-secondary/20 transition-colors z-40"
             aria-label="Scroll to Top"
           >
             <svg

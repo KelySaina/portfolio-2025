@@ -13,7 +13,7 @@ export default function ProjectCard({
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-primary/30 rounded-lg overflow-hidden group border border-secondary/20 shadow-lg hover:shadow-xl transition-shadow duration-300 mb-8"
+      className="glow-card bg-white/[0.03] backdrop-blur-sm rounded-xl overflow-hidden group border border-white/5 mb-4"
     >
       {image && (
         <div className="relative overflow-hidden">
@@ -32,7 +32,7 @@ export default function ProjectCard({
           {tech.map((item) => (
             <span
               key={item}
-              className="text-sm text-secondary bg-secondary/10 px-2 py-1 rounded"
+              className="text-xs text-secondary bg-secondary/10 px-2 py-0.5 rounded-full font-mono"
             >
               {item}
             </span>

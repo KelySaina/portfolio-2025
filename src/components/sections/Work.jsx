@@ -7,25 +7,44 @@ export default function Work() {
 
   const experiences = [
     {
-      title: "DevOps",
+      title: "DevOps Engineer",
       company: "MANAO Group - SIDINA",
       period: "December 2024 - Present",
       description: [
-        "Automating Non-Regression Tests (NRT) using Cypress",
-        "Leveraging AWS services for deployment and infrastructure management",
-        "Hands-on practice with Docker and Kubernetes for container orchestration",
-        "GitLab CI/CD for continuous integration and deployment",
-        "Implementing Ansible for configuration management and automation",
+        "Architected an interconnected Docker platform ecosystem with shared networking across 5+ microservices (auth, licences, accounting, client portal)",
+        "Built 'ocompose' — a reproducible Docker mini-OS platform with CLI + Web UI for multi-instance dev environments supporting PHP, Node.js, Python runtimes",
+        "Developed 'DB Docker Server' — a multi-engine database manager (MariaDB, MySQL, PostgreSQL) with React Web UI, SSE real-time logs, and MinIO backup sync",
+        "Created comprehensive Cypress E2E test suites for Paie (payroll) and Compta (accounting) with auto-generated test data via Faker.js and Excel fixtures",
+        "Built a QA Context toolkit for AI-assisted test compliance auditing and CSV-to-SQL import pipeline covering 20+ test codification files",
+        "Developed a SonarQube Runner web UI for triggering code analysis scans with real-time streamed output",
+        "Containerized legacy PHP 5.6/7.4 CodeIgniter apps with multi-network Docker Compose configurations and GHCR CI/CD publishing",
+        "Built a Konnect IDP/SSO service implementing OAuth 2.0, OpenID Connect, and TOTP-based MFA with admin dashboard",
+        "Deployed self-hosted n8n automation platform to sync Supabase data to third-party apps and trigger GitLab CI/CD pipelines via webhook hooks",
+        "Leveraging AWS services and GitLab CI/CD for cloud deployments and pipeline automation",
       ],
       tech: [
         "JavaScript",
         "Cypress",
-        "Tailwind CSS",
-        "Ansible",
-        "AWS",
         "Docker",
+        "Docker Compose",
+        "Bash",
+        "Node.js",
+        "React",
+        "PHP",
+        "CodeIgniter",
+        "Lumen",
+        "Nginx",
+        "MariaDB",
+        "PostgreSQL",
+        "MinIO",
+        "AWS",
         "Kubernetes",
         "GitLab CI",
+        "Ansible",
+        "SonarQube",
+        "n8n",
+        "OAuth 2.0",
+        "Webhooks",
       ],
     },
     {
@@ -84,18 +103,22 @@ export default function Work() {
   ];
 
   return (
-    <section id="work" className="py-20 min-h-screen">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="work" className="py-24">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold text-textPrimary mb-12">
-            Where I've Worked
-          </h2>
-          <div className="space-y-12">
+          <div className="relative mb-12">
+            <span className="section-number">02</span>
+            <h2 className="text-3xl font-bold text-textPrimary relative z-10">
+              Where I've Worked
+            </h2>
+            <div className="w-20 h-1 bg-secondary/50 rounded mt-3" />
+          </div>
+          <div className="timeline-line">
             {experiences.map((exp, index) => (
               <ExperienceCard key={index} {...exp} index={index} />
             ))}
