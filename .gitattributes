@@ -1,0 +1,17 @@
+# Normalise les fins de ligne : LF dans le depot et dans la copie de travail,
+# quelle que soit la machine (ce depot est edite sous Linux et sous Windows).
+* text=auto eol=lf
+
+# Binaires : ne jamais toucher.
+*.lockb binary
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.eot   binary
