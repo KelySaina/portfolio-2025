@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer-core";
-import { writeFileSync, mkdirSync } from "fs";
+import { writeFileSync, mkdirSync, existsSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -9,7 +9,7 @@ const OUTPUT_DIR = resolve(__dirname, "..", "public");
 // ─── Shared Data ─────────────────────────────────────────────
 const data = {
   name: "Thierry Michaël RAVELOMAHARAVO",
-  title: { en: "Full Stack Developer & DevOps Engineer", fr: "Développeur Full Stack & Ingénieur DevOps" },
+  title: { en: "DevOps & Application Security Engineer — Full Stack Developer", fr: "Ingénieur DevOps & Sécurité applicative — Développeur Full Stack" },
   email: "thierrymichael2001@gmail.com",
   phone: "+261 34 88 359 57",
   location: { en: "Antsirabe, Madagascar", fr: "Antsirabe, Madagascar" },
@@ -17,43 +17,51 @@ const data = {
   portfolio: "thierry-michael.vercel.app",
 
   summary: {
-    en: "Full Stack Developer and DevOps Engineer with hands-on experience across the entire software stack. Google Cloud Certified Associate Cloud Engineer. Specialized in building containerized platform ecosystems, CI/CD pipelines, and full-stack web applications using modern JavaScript/TypeScript frameworks.",
-    fr: "Développeur Full Stack et Ingénieur DevOps avec une expérience pratique sur l'ensemble de la pile logicielle. Certifié Google Cloud Associate Cloud Engineer. Spécialisé dans la construction d'écosystèmes de plateformes conteneurisées, de pipelines CI/CD et d'applications web full-stack avec des frameworks JavaScript/TypeScript modernes.",
+    en: "DevOps engineer and full stack developer, project lead for DevOps & QA, where application security has become the core of the role: code audits and authorized penetration testing of business applications, delivering replayable proof-of-concept evidence and surgical fixes. Google Cloud Certified Associate Cloud Engineer. Specialized in containerized ecosystems, CI/CD pipelines, and securing PHP/Laravel and JavaScript applications in production.",
+    fr: "Ingénieur DevOps et développeur Full Stack, chef de projet DevOps & QA, où la sécurité applicative est devenue le cœur du poste : audits de code et tests d'intrusion autorisés sur les applications métier, avec preuves d'exploitation rejouables et correctifs chirurgicaux. Certifié Google Cloud Associate Cloud Engineer. Spécialisé dans les écosystèmes conteneurisés, les pipelines CI/CD et la sécurisation d'applications PHP/Laravel et JavaScript en production.",
   },
 
   skills: {
+    security: {
+      en: ["Authorized web penetration testing", "OWASP Top 10", "Object-level access control", "Burp Suite", "Semgrep", "Security code review", "Replayable PoC harnesses"],
+      fr: ["Tests d'intrusion web autorisés", "OWASP Top 10", "Contrôle d'accès au niveau objet", "Burp Suite", "Semgrep", "Revue de code sécurité", "Harnais de PoC rejouables"],
+    },
     frontend: ["React", "Vue 3", "Next.js", "Nuxt.js", "Tailwind CSS", "TypeScript"],
-    backend: ["Node.js", "NestJS", "Express", "PHP", "CodeIgniter", "Lumen", "GraphQL", "Prisma"],
-    devops: ["Docker", "Docker Compose", "Kubernetes", "Nginx", "Jenkins", "GitLab CI", "GitHub Actions", "Ansible", "Bash"],
+    backend: ["Node.js", "NestJS", "Express", "PHP 5.6-8.2", "Laravel", "CodeIgniter 2/3", "Lumen", "GraphQL", "Prisma"],
+    devops: ["Docker", "Docker Compose", "Kubernetes", "Nginx", "GitLab CI", "GitHub Actions", "Jenkins", "Ansible", "Bash", "Tailscale"],
     cloud: ["Google Cloud Platform (ACE)", "AWS (EC2, S3)", "Vercel", "Supabase"],
-    databases: ["PostgreSQL", "MariaDB", "MySQL", "MinIO"],
+    databases: ["PostgreSQL", "MariaDB", "MySQL", "Redis", "MinIO"],
     testing: ["Cypress", "Faker.js", "SonarQube"],
-    languages: ["JavaScript", "TypeScript", "Python", "Java", "PHP", "Bash"],
+    languages: ["JavaScript", "TypeScript", "PHP", "Python", "Java", "Bash", "GDScript"],
   },
 
   experience: [
     {
-      title: { en: "Project Lead — DevOps & QA", fr: "Chef de Projet — DevOps & QA" },
+      title: { en: "Project Lead — DevOps, QA & Application Security", fr: "Chef de Projet — DevOps, QA & Sécurité applicative" },
       company: "MANAO Group - SIDINA",
       period: { en: "Dec 2024 - Present", fr: "Déc 2024 - Présent" },
       items: {
         en: [
-          "Leading and coordinating DevOps and QA teams, overseeing project delivery, tooling strategy, and quality standards",
-          "Architected an interconnected Docker platform ecosystem with shared networking across 5+ microservices",
-          "Built 'ocompose' — a reproducible Docker mini-OS platform with CLI + Web UI for multi-instance dev environments",
-          "Developed 'DB Docker Server' — a multi-engine database manager with React Web UI, SSE real-time logs, and MinIO backup sync",
+          "Ran authorized security audits and penetration tests against business web applications and APIs: code review, exploitation in isolated environments on test data, severity-ranked reporting and proposed fixes",
+          "Qualified access-control vulnerabilities escalated from client support: reproduced the issue, traced it to its root cause in code, and fixed the authorization layer rather than the symptom in the UI",
+          "Adversarial review of technical solution documents before implementation (session handling, real-time revocation), verified against the deployment branches",
+          "Designed an isolated per-developer test environment: 8 slots, 4 descriptor-driven applications, versioned reference datasets, web dashboard",
+          "Hardened a self-hosted automation platform: access restricted to a private mesh network, secrets removed from version control, encrypted daily backups",
+          "Led and coordinated the DevOps and QA teams, overseeing project delivery, tooling strategy, and quality standards",
+          "Architected an interconnected Docker platform ecosystem with shared networking across 5+ microservices; containerized legacy PHP 5.6/7.4 CodeIgniter apps with GHCR CI/CD",
+          "Built 'ocompose' — a reproducible Docker mini-OS platform with CLI + Web UI — and 'DB Docker Server', a multi-engine database manager with React Web UI and SSE real-time logs",
           "Created comprehensive Cypress E2E test suites for Paie and Compta with auto-generated test data via Faker.js",
-          "Containerized legacy PHP 5.6/7.4 CodeIgniter apps with multi-network Docker Compose and GHCR CI/CD",
-          "Deployed self-hosted n8n automation platform to sync Supabase data and trigger GitLab CI/CD pipelines",
         ],
         fr: [
+          "Conduite d'audits de sécurité et de tests d'intrusion autorisés sur les applications web et les API métier : revue de code, exploitation en environnement isolé sur données de test, rapport hiérarchisé et correctifs proposés",
+          "Qualification de vulnérabilités de contrôle d'accès remontées par le support : reproduction, remontée à la cause racine dans le code, correctif en profondeur côté API plutôt qu'au niveau de l'affichage",
+          "Audit contradictoire de dossiers de solution technique avant implémentation (gestion de session, révocation en temps réel), conduit sur les branches de déploiement",
+          "Conception d'un environnement de tests isolé par développeur : 8 slots, 4 applications pilotées par descripteur, jeux de données de référence versionnés, tableau de bord web",
+          "Durcissement d'une plateforme d'automatisation auto-hébergée : accès restreint à un réseau privé maillé, secrets sortis du dépôt, sauvegardes chiffrées quotidiennes",
           "Direction et coordination des équipes DevOps et QA, supervision de la livraison des projets et des standards qualité",
-          "Conception d'un écosystème Docker interconnecté avec réseau partagé pour 5+ microservices",
-          "Développement d'ocompose — plateforme Docker mini-OS reproductible avec CLI + Web UI pour environnements multi-instances",
-          "Développement de DB Docker Server — gestionnaire de bases de données multi-moteur avec Web UI React et logs SSE temps réel",
+          "Conception d'un écosystème Docker interconnecté avec réseau partagé pour 5+ microservices ; conteneurisation d'applications legacy PHP 5.6/7.4 CodeIgniter avec CI/CD GHCR",
+          "Développement d'ocompose — plateforme Docker mini-OS reproductible avec CLI + Web UI — et de DB Docker Server, gestionnaire de bases de données multi-moteur avec Web UI React et logs SSE temps réel",
           "Création de suites de tests E2E Cypress pour Paie et Compta avec données de test auto-générées via Faker.js",
-          "Conteneurisation d'applications legacy PHP 5.6/7.4 CodeIgniter avec Docker Compose multi-réseau et CI/CD GHCR",
-          "Déploiement d'une plateforme n8n auto-hébergée pour synchroniser Supabase et déclencher des pipelines GitLab CI/CD",
         ],
       },
     },
@@ -152,6 +160,14 @@ const data = {
 
   projects: [
     {
+      name: "Road to sudo",
+      desc: {
+        en: "Educational game teaching Linux through a simulated terminal: virtual filesystem, 74 commands, 64 challenges across 14 levels validated against machine state rather than typed strings. Released as Linux and Windows binaries",
+        fr: "Jeu éducatif enseignant Linux par un terminal simulé : système de fichiers virtuel, 74 commandes, 64 défis sur 14 niveaux validés par l'état de la machine et non par la chaîne tapée. Publié en binaires Linux et Windows",
+      },
+      tech: "Godot 4.4, GDScript, GitHub Actions",
+    },
+    {
       name: "AKD-MI",
       desc: {
         en: "Full-stack institution directory platform with GPS mapping, RBAC, and GraphQL API",
@@ -217,6 +233,7 @@ const labels = {
     certifications: "Certifications",
     projects: "Personal Projects",
     languages: "Languages",
+    security: "Security",
     frontend: "Frontend",
     backend: "Backend",
     devops: "DevOps & CI/CD",
@@ -233,6 +250,7 @@ const labels = {
     certifications: "Certifications",
     projects: "Projets Personnels",
     languages: "Langues",
+    security: "Sécurité",
     frontend: "Frontend",
     backend: "Backend",
     devops: "DevOps & CI/CD",
@@ -276,7 +294,11 @@ function buildHTML(lang) {
   }
 
   /* Page break control */
-  .section { break-inside: avoid; }
+  /* Les sections peuvent se poursuivre d'une page a l'autre : sinon une section
+     trop longue (l'experience) saute entiere a la page suivante et laisse un
+     demi-page vide. Les entrees individuelles, elles, restent insecables. */
+  .section { break-inside: auto; }
+  .section-title { break-after: avoid; }
   .exp-item { break-inside: avoid; }
   .edu-item { break-inside: avoid; }
   .proj-item { break-inside: avoid; }
@@ -395,6 +417,7 @@ function buildHTML(lang) {
   <div class="section">
     <div class="section-title">${l.skills}</div>
     <div class="skills-grid">
+      <div class="skill-row"><span class="skill-label">${l.security}:</span><span class="skill-value">${data.skills.security[lang].join(", ")}</span></div>
       <div class="skill-row"><span class="skill-label">${l.frontend}:</span><span class="skill-value">${data.skills.frontend.join(", ")}</span></div>
       <div class="skill-row"><span class="skill-label">${l.backend}:</span><span class="skill-value">${data.skills.backend.join(", ")}</span></div>
       <div class="skill-row"><span class="skill-label">${l.devops}:</span><span class="skill-value">${data.skills.devops.join(", ")}</span></div>
@@ -487,6 +510,47 @@ function buildHTML(lang) {
 </html>`;
 }
 
+// ─── Chrome lookup ───────────────────────────────────────────
+// Ce depot est edite sous Linux et sous Windows : on cherche un navigateur
+// plutot que de coder un chemin en dur. PUPPETEER_EXECUTABLE_PATH gagne.
+function findChrome() {
+  const fromEnv = process.env.PUPPETEER_EXECUTABLE_PATH;
+  if (fromEnv) {
+    if (!existsSync(fromEnv)) {
+      throw new Error(`PUPPETEER_EXECUTABLE_PATH pointe sur un fichier absent : ${fromEnv}`);
+    }
+    return fromEnv;
+  }
+
+  const candidates =
+    process.platform === "win32"
+      ? [
+          "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+          "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
+        ]
+      : process.platform === "darwin"
+      ? [
+          "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+          "/Applications/Chromium.app/Contents/MacOS/Chromium",
+        ]
+      : [
+          "/usr/bin/google-chrome",
+          "/usr/bin/chromium",
+          "/usr/bin/chromium-browser",
+          "/snap/bin/chromium",
+        ];
+
+  const found = candidates.find((c) => existsSync(c));
+  if (!found) {
+    throw new Error(
+      "Aucun Chrome/Chromium trouve. Installez-en un, ou definissez PUPPETEER_EXECUTABLE_PATH.\n" +
+        "Cherche :\n  " + candidates.join("\n  ")
+    );
+  }
+  return found;
+}
+
 // ─── PDF Generation ──────────────────────────────────────────
 async function generatePDF(lang) {
   const html = buildHTML(lang);
@@ -498,8 +562,9 @@ async function generatePDF(lang) {
   console.log(`  ✓ HTML written: ${htmlPath}`);
 
   const browser = await puppeteer.launch({
-    executablePath: "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+    executablePath: findChrome(),
     headless: true,
+    args: ["--no-sandbox"],
   });
 
   const page = await browser.newPage();

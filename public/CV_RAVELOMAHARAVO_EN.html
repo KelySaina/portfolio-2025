@@ -26,7 +26,11 @@
   }
 
   /* Page break control */
-  .section { break-inside: avoid; }
+  /* Les sections peuvent se poursuivre d'une page a l'autre : sinon une section
+     trop longue (l'experience) saute entiere a la page suivante et laisse un
+     demi-page vide. Les entrees individuelles, elles, restent insecables. */
+  .section { break-inside: auto; }
+  .section-title { break-after: avoid; }
   .exp-item { break-inside: avoid; }
   .edu-item { break-inside: avoid; }
   .proj-item { break-inside: avoid; }
@@ -125,7 +129,7 @@
   <!-- Header -->
   <div class="header">
     <h1>Thierry Michaël RAVELOMAHARAVO</h1>
-    <div class="subtitle">Full Stack Developer & DevOps Engineer</div>
+    <div class="subtitle">DevOps & Application Security Engineer — Full Stack Developer</div>
     <div class="contact-row">
       <span>thierrymichael2001@gmail.com</span>
       <span>+261 34 88 359 57</span>
@@ -138,20 +142,21 @@
   <!-- Summary -->
   <div class="section">
     <div class="section-title">Profile</div>
-    <p class="summary">Full Stack Developer and DevOps Engineer with hands-on experience across the entire software stack. Google Cloud Certified Associate Cloud Engineer. Specialized in building containerized platform ecosystems, CI/CD pipelines, and full-stack web applications using modern JavaScript/TypeScript frameworks.</p>
+    <p class="summary">DevOps engineer and full stack developer, project lead for DevOps & QA, where application security has become the core of the role: code audits and authorized penetration testing of business applications, delivering replayable proof-of-concept evidence and surgical fixes. Google Cloud Certified Associate Cloud Engineer. Specialized in containerized ecosystems, CI/CD pipelines, and securing PHP/Laravel and JavaScript applications in production.</p>
   </div>
 
   <!-- Skills -->
   <div class="section">
     <div class="section-title">Technical Skills</div>
     <div class="skills-grid">
+      <div class="skill-row"><span class="skill-label">Security:</span><span class="skill-value">Authorized web penetration testing, OWASP Top 10, Object-level access control, Burp Suite, Semgrep, Security code review, Replayable PoC harnesses</span></div>
       <div class="skill-row"><span class="skill-label">Frontend:</span><span class="skill-value">React, Vue 3, Next.js, Nuxt.js, Tailwind CSS, TypeScript</span></div>
-      <div class="skill-row"><span class="skill-label">Backend:</span><span class="skill-value">Node.js, NestJS, Express, PHP, CodeIgniter, Lumen, GraphQL, Prisma</span></div>
-      <div class="skill-row"><span class="skill-label">DevOps & CI/CD:</span><span class="skill-value">Docker, Docker Compose, Kubernetes, Nginx, Jenkins, GitLab CI, GitHub Actions, Ansible, Bash</span></div>
+      <div class="skill-row"><span class="skill-label">Backend:</span><span class="skill-value">Node.js, NestJS, Express, PHP 5.6-8.2, Laravel, CodeIgniter 2/3, Lumen, GraphQL, Prisma</span></div>
+      <div class="skill-row"><span class="skill-label">DevOps & CI/CD:</span><span class="skill-value">Docker, Docker Compose, Kubernetes, Nginx, GitLab CI, GitHub Actions, Jenkins, Ansible, Bash, Tailscale</span></div>
       <div class="skill-row"><span class="skill-label">Cloud & Platforms:</span><span class="skill-value">Google Cloud Platform (ACE), AWS (EC2, S3), Vercel, Supabase</span></div>
-      <div class="skill-row"><span class="skill-label">Databases:</span><span class="skill-value">PostgreSQL, MariaDB, MySQL, MinIO</span></div>
+      <div class="skill-row"><span class="skill-label">Databases:</span><span class="skill-value">PostgreSQL, MariaDB, MySQL, Redis, MinIO</span></div>
       <div class="skill-row"><span class="skill-label">Testing & QA:</span><span class="skill-value">Cypress, Faker.js, SonarQube</span></div>
-      <div class="skill-row"><span class="skill-label">Languages:</span><span class="skill-value">JavaScript, TypeScript, Python, Java, PHP, Bash</span></div>
+      <div class="skill-row"><span class="skill-label">Languages:</span><span class="skill-value">JavaScript, TypeScript, PHP, Python, Java, Bash, GDScript</span></div>
     </div>
   </div>
 
@@ -161,18 +166,20 @@
     
     <div class="exp-item">
       <div class="exp-header">
-        <span class="exp-title">Project Lead — DevOps & QA</span>
+        <span class="exp-title">Project Lead — DevOps, QA & Application Security</span>
         <span class="exp-period">Dec 2024 - Present</span>
       </div>
       <div class="exp-company">MANAO Group - SIDINA</div>
       <ul class="exp-list">
-        <li>Leading and coordinating DevOps and QA teams, overseeing project delivery, tooling strategy, and quality standards</li>
-        <li>Architected an interconnected Docker platform ecosystem with shared networking across 5+ microservices</li>
-        <li>Built 'ocompose' — a reproducible Docker mini-OS platform with CLI + Web UI for multi-instance dev environments</li>
-        <li>Developed 'DB Docker Server' — a multi-engine database manager with React Web UI, SSE real-time logs, and MinIO backup sync</li>
+        <li>Ran authorized security audits and penetration tests against business web applications and APIs: code review, exploitation in isolated environments on test data, severity-ranked reporting and proposed fixes</li>
+        <li>Qualified access-control vulnerabilities escalated from client support: reproduced the issue, traced it to its root cause in code, and fixed the authorization layer rather than the symptom in the UI</li>
+        <li>Adversarial review of technical solution documents before implementation (session handling, real-time revocation), verified against the deployment branches</li>
+        <li>Designed an isolated per-developer test environment: 8 slots, 4 descriptor-driven applications, versioned reference datasets, web dashboard</li>
+        <li>Hardened a self-hosted automation platform: access restricted to a private mesh network, secrets removed from version control, encrypted daily backups</li>
+        <li>Led and coordinated the DevOps and QA teams, overseeing project delivery, tooling strategy, and quality standards</li>
+        <li>Architected an interconnected Docker platform ecosystem with shared networking across 5+ microservices; containerized legacy PHP 5.6/7.4 CodeIgniter apps with GHCR CI/CD</li>
+        <li>Built 'ocompose' — a reproducible Docker mini-OS platform with CLI + Web UI — and 'DB Docker Server', a multi-engine database manager with React Web UI and SSE real-time logs</li>
         <li>Created comprehensive Cypress E2E test suites for Paie and Compta with auto-generated test data via Faker.js</li>
-        <li>Containerized legacy PHP 5.6/7.4 CodeIgniter apps with multi-network Docker Compose and GHCR CI/CD</li>
-        <li>Deployed self-hosted n8n automation platform to sync Supabase data and trigger GitLab CI/CD pipelines</li>
       </ul>
     </div>
 
@@ -273,6 +280,11 @@
   <div class="section">
     <div class="section-title">Personal Projects</div>
     
+    <div class="proj-item">
+      <span class="proj-name">Road to sudo</span> — <span class="proj-desc">Educational game teaching Linux through a simulated terminal: virtual filesystem, 74 commands, 64 challenges across 14 levels validated against machine state rather than typed strings. Released as Linux and Windows binaries</span>
+      <div class="proj-tech">Godot 4.4, GDScript, GitHub Actions</div>
+    </div>
+
     <div class="proj-item">
       <span class="proj-name">AKD-MI</span> — <span class="proj-desc">Full-stack institution directory platform with GPS mapping, RBAC, and GraphQL API</span>
       <div class="proj-tech">Next.js, NestJS, GraphQL, Prisma, PostgreSQL, Docker</div>
