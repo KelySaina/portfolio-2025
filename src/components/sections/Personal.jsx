@@ -15,6 +15,16 @@ const showCase = [
     },
   },
   {
+    title: "Road to sudo \u2014 Learn Linux by Playing",
+    description:
+      "An educational game teaching Linux through a simulated terminal: a virtual filesystem, 74 commands, and 64 challenges across 14 levels. Challenges are validated against the resulting machine state rather than the typed command, so any valid solution passes. Includes a 2D platformer adventure mode, full EN/FR localization, and ~2,000 test assertions. Released as self-contained Linux and Windows binaries.",
+    tech: ["Godot 4.4", "GDScript", "GitHub Actions", "i18n"],
+    links: {
+      github: "https://github.com/KelySaina/road-to-sudo",
+      live: "https://github.com/KelySaina/road-to-sudo/releases",
+    },
+  },
+  {
     title: "AKD-MI — Institution Directory",
     description:
       "Full-stack platform for browsing and managing institutional data with GPS mapping, draft/publish workflows, RBAC, and a modular architecture. Features Leaflet maps, advanced search, and Supabase Auth (migrating to Passport.js + JWT).",

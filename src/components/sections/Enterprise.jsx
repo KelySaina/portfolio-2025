@@ -4,101 +4,98 @@ import { useState } from "react";
 import {
   Server,
   Shield,
+  Lock,
+  FileSearch,
+  Network,
   Database,
   Terminal,
   TestTube2,
   Layers,
   ChevronDown,
   ChevronUp,
-  Globe,
   Wrench,
   Workflow,
 } from "lucide-react";
 
-const platformApps = [
+const securityWork = [
   {
-    title: "Identification Service",
+    title: "Web Application Penetration Testing",
     description:
-      "Centralized authentication & identity service for the entire MANAO platform ecosystem. Handles user login, account management, session encryption, and exposes a webservice API consumed by all other applications. In charge of containerizing and deploying the service.",
-    tech: [
-      "PHP 7.4",
-      "CodeIgniter 3",
-      "Nginx",
-      "Docker",
-      "MariaDB",
-      "Mailjet",
-      "reCAPTCHA",
-    ],
+      "Authorized grey-box testing of PHP business applications and their APIs, run against isolated environments with test-only accounts and data. Deliverables: a replayable proof-of-concept harness, a severity-ranked report, and surgical fixes that do not break legacy behaviour.",
+    tech: ["Burp Suite", "Semgrep", "OWASP Top 10", "PHP", "CodeIgniter", "Bash"],
     icon: Shield,
     highlights: [
-      "Dockerized the application and published container image to GHCR",
-      "reCAPTCHA v2/v3 integration for brute-force protection",
-      "Session encryption with configurable key rotation",
-      "Production configs injected at runtime via Docker env vars",
+      "Grey-box methodology: code review paired with live exploitation",
+      "Every finding proven with a scripted, replayable proof of concept",
+      "Test-only accounts and data \u2014 no real records touched",
+      "Severity-ranked reporting with remediation per finding",
     ],
   },
   {
-    title: "Master Licences Platform",
+    title: "Access Control Review",
     description:
-      "Central hub for managing software licences, user rights, GED document consumption, and user administration. Features a multi-API architecture with a CodeIgniter frontend, CI3 API v1, and a Lumen (Laravel) microservice for user management. In charge of containerizing and deploying the platform.",
-    tech: [
-      "PHP 7.4",
-      "CodeIgniter 3",
-      "Lumen",
-      "Composer",
-      "Nginx",
-      "Docker",
-      "MariaDB",
-    ],
-    icon: Layers,
+      "Code review of authorization paths across multi-tenant APIs, and root-cause analysis of access anomalies escalated from client support \u2014 fixing the authorization layer rather than the symptom in the UI.",
+    tech: ["PHP", "Laravel", "CodeIgniter", "REST API Security"],
+    icon: Lock,
     highlights: [
-      "Dockerized the multi-API architecture (CI3 REST API + Lumen microservice)",
-      "GED document consumption endpoint",
-      "Automated container builds published to GHCR",
-      "Provides the shared Docker network consumed by all platform apps",
+      "Object-level authorization auditing across tenant boundaries",
+      "Traces support-reported anomalies to their root cause in code",
+      "Token-derived object scoping over client-supplied identifiers",
+      "Fixes applied at the API layer, not the presentation layer",
     ],
   },
   {
-    title: "MANAO Compta",
+    title: "Design-Stage Security Review",
     description:
-      "Full-featured accounting application with a separated REST API. Legacy PHP 5.6 codebase with dual entry points — main UI and API — each with independent configurations and routing. In charge of containerizing the legacy codebase for Docker deployment.",
-    tech: [
-      "PHP 5.6",
-      "CodeIgniter 3",
-      "Nginx",
-      "Docker",
-      "MariaDB",
-    ],
-    icon: Globe,
+      "Adversarial review of technical solution documents before implementation, verifying each claim against the code on the deployment branches rather than the working branches \u2014 where stale branches had previously produced false conclusions.",
+    tech: ["Redis", "SSE", "PHP", "Laravel", "Git"],
+    icon: FileSearch,
     highlights: [
-      "Dockerized the dual VirtualHost architecture (app + API on separate routes)",
-      "Connects to 3 external Docker networks simultaneously",
-      "Legacy PHP 5.6 with EOL Debian Stretch compatibility workarounds",
-      "Production-ready with runtime env var injection",
+      "Each design claim checked against deployed code, not the document",
+      "Audits run on deployment branches to avoid stale-branch findings",
+      "Covers session handling and real-time revocation design",
+      "Separates viability concerns from security findings",
     ],
   },
   {
-    title: "Licences Client Portal",
+    title: "Infrastructure Hardening",
     description:
-      "Client-facing licence management portal allowing end-users to manage their software licences, upload documents, and interact with the master licence system through a dedicated interface. In charge of containerizing and deploying the portal.",
-    tech: [
-      "PHP 7.4",
-      "CodeIgniter 3",
-      "Nginx",
-      "Docker",
-      "MariaDB",
-    ],
-    icon: Globe,
+      "Attack-surface reduction for self-hosted services: private mesh networking instead of public exposure, secrets management, and encrypted automated backups.",
+    tech: ["Docker", "Tailscale", "GitLab CI", "systemd", "PostgreSQL"],
+    icon: Network,
     highlights: [
-      "Dockerized and published to GHCR for CI/CD deployments",
-      "Secure file upload handling with permission management",
-      "Interconnected with identification & master-licences services",
-      "Environment-aware production deployment via Docker env vars",
+      "Public exposure replaced with private mesh network access",
+      "Secrets moved out of version control into gitignored environment files",
+      "Encrypted daily database and credential backups on a systemd timer",
+      "Treats an automation engine's UI as a privileged shell",
     ],
   },
 ];
 
 const devopsTools = [
+  {
+    title: "Legacy Platform Containerization",
+    description:
+      "Containerized and deployed four interdependent legacy PHP business applications into a reproducible multi-network Docker environment \u2014 shared service discovery, per-application entry points and routing, independent configuration per codebase, and CI/CD image publishing. Third-party codebases: the infrastructure is mine, the applications are not.",
+    tech: [
+      "Docker",
+      "Docker Compose",
+      "Nginx",
+      "PHP 5.6-7.4",
+      "CodeIgniter 3",
+      "MariaDB",
+      "GitLab CI",
+      "GHCR",
+    ],
+    icon: Layers,
+    highlights: [
+      "Multi-network topology with shared service discovery across applications",
+      "Dual entry points (UI + REST API) with independent routing per codebase",
+      "EOL PHP 5.6 / Debian Stretch compatibility workarounds",
+      "Runtime configuration injection via Docker environment variables",
+      "Automated container builds published to GHCR",
+    ],
+  },
   {
     title: "ocompose",
     description:
@@ -355,8 +352,9 @@ export default function Enterprise() {
           </div>
           <p className="text-textSecondary mb-12 max-w-3xl">
             A complete interconnected platform ecosystem at MANAO Group —
-            spanning web applications I dockerized and deployed, DevOps infrastructure tooling I built, and
-            automated test suites — all orchestrated through Docker networking.
+            spanning the containerization and deployment of the core business
+            applications, the DevOps tooling I built, and automated test suites
+            — all orchestrated through Docker networking.
           </p>
 
           {/* Architecture Overview */}
@@ -381,9 +379,9 @@ export default function Enterprise() {
                   Application Layer
                 </p>
                 <p className="text-textSecondary">
-                  Identification handles centralized auth.
-                  Master Licences manages rights & GED. Compta and Licences
-                  Client connect through shared Docker networks. All apps dockerized for production deployment.
+                  Four interdependent legacy PHP applications, containerized
+                  into a reproducible multi-network Docker environment with
+                  shared service discovery and per-application entry points.
                 </p>
               </div>
               <div>
@@ -409,16 +407,17 @@ export default function Enterprise() {
             </div>
           </div>
 
+
           <CategorySection
-            title="Platform Applications"
-            subtitle="Interconnected web applications I dockerized and deployed for the core business platform"
-            icon={Globe}
-            items={platformApps}
+            title="Security Engineering"
+            subtitle="Authorized application security work on production business platforms, under NDA — findings and reports are not public, the methods are"
+            icon={Shield}
+            items={securityWork}
           />
 
           <CategorySection
-            title="DevOps & Infrastructure Tools"
-            subtitle="Custom tooling for development environments, database management, and code quality"
+            title="Infrastructure & Deployment"
+            subtitle="Containerization of the core business platform, plus custom tooling for dev environments, databases, and code quality"
             icon={Terminal}
             items={devopsTools}
           />
